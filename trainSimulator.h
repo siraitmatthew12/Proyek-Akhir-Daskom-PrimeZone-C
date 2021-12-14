@@ -6,6 +6,14 @@ struct apiStasiun{
 	int jumlahStasiunKeUI;
 };
 
+void perhitunganPenumpangNaikTurun(
+int jumlahStasiunYangDilewati, 
+int	jumlahOrangKeluar,
+int	jumlahOrangMasuk,
+int	jumlahPenumpang);
+
+void gpsLocator(int i);
+
 void trainSimulator(){
 	int jumlahOrangKeluar = 0, jumlahOrangMasuk = 0, i, jumlahPenumpang = 0;
 	int jumlahStasiunYangDilewati = 0;
@@ -50,8 +58,6 @@ void trainSimulator(){
 	jumlahOrangMasuk,
 	jumlahPenumpang
 	);
-	
-	return 0;
 }
 
 void perhitunganPenumpangNaikTurun(

@@ -8,6 +8,10 @@
 #include <stdlib.h>
 
 
+void printerMaze(char tujuan[0], struct Pokemons *arrofPokemon, int *checker);
+void running(struct Pokemons *arrofPokemon);
+
+
 int x=1;
 int y=1;
 int stopper;
@@ -105,7 +109,6 @@ void pokemon(){
 
 	system("cls");
  	}while(stopper!=1);
-  return 0;
 }
 
 void printerMaze(char tujuan[0], struct Pokemons *arrofPokemon, int *checker){

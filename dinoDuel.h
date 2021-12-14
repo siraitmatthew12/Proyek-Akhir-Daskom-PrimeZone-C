@@ -150,8 +150,7 @@ void dinoDuel(){
 	}
 	while (!strcmp(kembali, "Ya"));
 
-	
-	return 0;
+
 }
 
 void battleInfo (struct dino player, struct dino bot) {

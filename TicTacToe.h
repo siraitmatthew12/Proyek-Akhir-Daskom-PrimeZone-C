@@ -63,7 +63,6 @@ void tictactoe(){
 		printf("Permainan Seri !");
 	}
 	getch ();
-	return 0;
 }
 
 int pemenang(){

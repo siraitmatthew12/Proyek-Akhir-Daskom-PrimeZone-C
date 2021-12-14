@@ -89,7 +89,6 @@ void shop(int *uang){
 		}	
 	} while (!strcmp(keluar, "Ya"));
 	
-	return 0;
 }
 
 

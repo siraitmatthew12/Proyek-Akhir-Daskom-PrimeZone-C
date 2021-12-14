@@ -2,6 +2,8 @@
 #include <time.h>
 #include <stdlib.h>
 
+void checker(int *arrwhack, int *mole, int pilihanUser, char *tabel);
+
 void whackAMole()
 {
     int arrwhack[10]={0};
@@ -66,7 +68,6 @@ void whackAMole()
 			printf("     |     |     \n");
 			
 		checkArrayTic(arrwhack)==0?printf("Selamat Anda telah memenangkan permainan"):printf("Maaf Anda Kalah");	
-    return 0;
 }
 
 

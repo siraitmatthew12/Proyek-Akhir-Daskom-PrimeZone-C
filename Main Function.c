@@ -12,7 +12,10 @@
 int main(){
     srand(time(NULL)); 
     int saldo = 0, angkaPilihanSaldo, pilihanGame, pilihanMenu = 0;
-	  printf("--Selamat datang dalam Program PrimeZone C--\n");	
+	  printf("=========PrimeZone C====PrimeZone C===========\n");	
+	  printf("=========PrimeZone C====PrimeZone C===========\n");	
+	  printf("=========PrimeZone C====PrimeZone C===========\n");	
+    
 	  printf("\n");
 	
 	do{

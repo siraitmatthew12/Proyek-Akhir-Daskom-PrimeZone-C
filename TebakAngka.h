@@ -57,7 +57,6 @@ void tebakAngka(){
 	system("CLS");
 }
 	while(operasi!=3);
-	return 0;
 	
 }
 

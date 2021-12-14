@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+void petaErrangel(void);
+
 void pubgMaze(){
     int pilihanMap;
     
@@ -21,8 +23,6 @@ void pubgMaze(){
     	printf("\nKarena peta yang tersedia baru errangel, harap menekan tombol nomor 1\n");
         break;
     }
-    
-    return 0;
 }
 
 void petaErrangel(void){
