@@ -11,7 +11,7 @@
 
 int main(){
     srand(time(NULL)); 
-    int saldo, angkaPilihanSaldo, pilihanGame, pilihanMenu = 0;
+    int saldo = 0, angkaPilihanSaldo, pilihanGame, pilihanMenu = 0;
 	  printf("--Selamat datang dalam Program PrimeZone C--\n");	
 	  printf("\n");
 	
@@ -191,23 +191,23 @@ int main(){
       switch(angkaPilihanSaldo){
         case 1:
           printf("\nSaldo Anda sekarang adalah Rp50.000,00");
-          saldo = 50000;
+          saldo += 50000;
           break;
         case 2:
           printf("\nSaldo Anda sekarang adalah Rp75.000,00");
-          saldo = 75000;
+          saldo += 75000;
           break;
         case 3:
           printf("\nSaldo Anda sekarang adalah Rp100.000,00");
-          saldo = 100000;
+          saldo += 100000;
           break;
         case 4:
           printf("\nSaldo Anda sekarang adalah Rp125.000,00");
-          saldo = 125000;
+          saldo += 125000;
           break;
         case 5:
           printf("\nSaldo Anda sekarang adalah Rp150.000,00");
-          saldo = 150000;
+          saldo += 150000;
           break;
         default:
           printf("Anda harus memilih salah satu paket yang tertera.");
