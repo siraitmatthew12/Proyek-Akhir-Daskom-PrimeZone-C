@@ -14,7 +14,7 @@ int	jumlahPenumpang);
 
 void gpsLocator(int i);
 
-void trainSimulator(){
+void trainSimulator(){ //Potongan Program Untuk Masuk ke Game Train Simulator
 	int jumlahOrangKeluar = 0, jumlahOrangMasuk = 0, i, jumlahPenumpang = 0;
 	int jumlahStasiunYangDilewati = 0;
 	char namaStasiun[50];
@@ -152,7 +152,7 @@ int	jumlahPenumpang)
 	sleep(5);
 }
 
-void gpsLocator(int i){
+void gpsLocator(int i){ //gps penentu pemain sedang berada di titik lokasi
 	switch(i){
 		case 16:
 			printf("\nSekarang Anda Berada di Stasiun Jakarta Kota.");
@@ -229,7 +229,7 @@ void gpsLocator(int i){
 	}
 }
 
-int jumlahStasiun(char *namaStasiun){
+int jumlahStasiun(char *namaStasiun){ //kumpulan informasi stasiun
 	
 	int totalStasiun;
 	
