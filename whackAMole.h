@@ -2,8 +2,6 @@
 #include <time.h>
 #include <stdlib.h>
 
-void checker(int *arrwhack, int *mole, int pilihanUser, char *tabel);
-
 void whackAMole()
 {
     int arrwhack[10]={0};
@@ -53,7 +51,7 @@ void whackAMole()
 			system("cls");
 		}
 			
-		}while(checkArrayTic(arrwhack)==1 && attempt!=5);
+		}while(checkArrayWhack(arrwhack)==1 && attempt!=5);
 		
 		//  hasil akhir dari permainan
 			printf("Terimakasih Telah Bermain\n");	
@@ -67,7 +65,8 @@ void whackAMole()
 			printf("  %c  |  %c  |  %c  \n",tabel[7],tabel[8],tabel[9]);
 			printf("     |     |     \n");
 			
-		checkArrayTic(arrwhack)==0?printf("Selamat Anda telah memenangkan permainan"):printf("Maaf Anda Kalah");	
+		checkArrayWhack(arrwhack)==0?printf("Selamat Anda telah memenangkan permainan"):printf("Maaf Anda Kalah");	
+    return 0;
 }
 
 
@@ -95,17 +94,16 @@ void checker(int *arrwhack, int *mole, int pilihanUser, char *tabel){
 
 
 //	function checkarray
-int checkArrayTic(int *arrTicTacToe){
+int checkArrayWhack(int *arrwhack){
 	int val=1;
 	int i;
 	for (i=0;i<=9;i++){
-		if(arrTicTacToe[i]!=0){
+		if(arrwhack[i]!=0){
 			val=1;
 			break;		
 		}else{
 			val=0;
 		}
-	
 	}
 	return val;
 }

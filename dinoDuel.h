@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-struct dino {
+struct dino { //untuk informasi mengenai masing-masing dino
 	char name[50];
 	int hp;
 	int def;
@@ -12,19 +12,19 @@ struct dino {
 	float critChance;
 };
 
-void battleInfo (struct dino player, struct dino bot);
+void battleInfo (struct dino player, struct dino bot);//prototype function battleinfo
 
-int random(int lower, int upper){
-    int i;
+int random(int lower, int upper){ // function untuk randomize angka
     int num = (rand() % (upper - lower + 1)) + lower;
     
     return num;
 
 }
 
-void check(int player, int bot, struct dino *player1, struct dino *bot1);
+void check(int player, int bot, struct dino *player1, struct dino *bot1); //prototype function check
 
 void dinoDuel(){
+	//deklarasi semua variabel
 	int i;
 	struct dino player;
 	struct dino bot;
@@ -33,6 +33,7 @@ void dinoDuel(){
 	int pilihanPlayer, pilihanBot;
 	char kembali[10];
 	
+	//inisialisasi semua jenis dino
 	struct dino trex = {
 		"T-Rex", 1100, 100, 500, 300, 0.4
 	};
@@ -49,10 +50,11 @@ void dinoDuel(){
 		"Angkylosaurus", 1600, 125, 400, 250, 0.2
 	};
 	
+	//enkapsulasi semua struct dino yang ada
 	struct dino daftardino[4] = {trex, pteranodon, triceratop, angkylosaurus};
 	
-	do {
-			do {
+	do {//pengulangan game
+			do {//pengulangan kesiapan pemain
 				system("cls");
 				printf("==================================================================\n");
 				printf("               WELCOME TO DINOSAUR SUIT BATTLE\n");
@@ -70,21 +72,21 @@ void dinoDuel(){
 				printf("Pilihlah Dino favoritmu!\n(dari angka 1-4)\n\n");
 				scanf("%d", &playerPick);
 			
-				srand(time(0));
+				srand(time(0));//dipakai agar setiap nilai yang dirandomize akan memiliki nilai yang berbeda
 	
-				player = daftardino[playerPick-1];
-				bot = daftardino[random(0,3)];
+				player = daftardino[playerPick-1];//sesuai pilihan pemain
+				bot = daftardino[random(0,3)];//sesuai hasil nilai random
 		
 				system("cls");
-				battleInfo(player, bot);
+				battleInfo(player, bot);//menunjukkan info jenis dino yang digunakan pemain dan bot
 				printf("Apakah anda sudah siap untuk bertarung?\n(Sudah/Belum)\n\n");
 				scanf(" %255[^\n]s", &kondisi);
 		
-				if(strcmp(kondisi, "Sudah") == 0){
+				if(strcmp(kondisi, "Sudah") == 0){//kondisi sudah siap untuk break untuk lanjut ke sesi selanjutnya yaitu permainan
 					break;
 				}
 		
-				else if(strcmp(kondisi, "Belum") == 0) {
+				else if(strcmp(kondisi, "Belum") == 0) {//kondisi belum untuk ditanyakan kembali mengubah pilihan atau tidak
 					printf("Baik akan ditunggu selama 5 detik. Apakah anda ingin mengubah pilihan anda? (Ya/Tidak)");
 					scanf(" %255[^\n]s", &kondisi);
 					printf("Menunggu.....");
@@ -96,18 +98,19 @@ void dinoDuel(){
 					sleep(5);		
 				}
 		
-				else{
+				else{//error handling agar input yang dimasukkan benar
 					printf("Maaf input yang anda masukkan salah, Apakah anda ingin mengubah pikiran anda:\n(Ya atau Tidak)\n\n");
 					scanf(" %255[^\n]s", &kondisi);
 					printf("Menunggu.....");
 					sleep(5);
 				}
 			}
-			while (strcmp(kondisi, "Ya") == 0);
+			while (strcmp(kondisi, "Ya") == 0);//agar kembali diulangi ke pemilihan apabila pemain ingin mengubah pikiran
 			
 			system("cls");
 			
-			while (player.hp > 0 && bot.hp > 0){
+			//masuk ke dalam permainan
+			while (player.hp > 0 && bot.hp > 0){//untuk pengkondisian dimana apabila darah menyentuh angka 0 game akan berakhir
 					printf("==================================================================\n");
 					printf("                          BATTLE INFO\n");
 					printf("==================================================================\n");
@@ -120,8 +123,8 @@ void dinoDuel(){
 					printf("Masukkan pilihanmu: ");
 					scanf("%d", &pilihanPlayer);
 					srand(time(0));
-					pilihanBot = random(1,3);
-					check(pilihanPlayer, pilihanBot, &player, &bot);
+					pilihanBot = random(1,3);//randomize pilihan dari bot
+					check(pilihanPlayer, pilihanBot, &player, &bot);//pengecekan siapa yang menang
 			}
 			system("cls");
 			if(player.hp > 0){
@@ -129,16 +132,16 @@ void dinoDuel(){
 				printf("Selamat Kamu Menang!\n");
 			}
 					
-			else if(player.hp <= 0){
+			else {
 				printf("==================================================================\n");
 				printf("Maaf kamu kalah!\n");
 			}
 			printf("==================================================================\n");
 			printf("Apakah kamu ingin mencoba lagi?\n(Ya/Tidak)\n\n");
-			scanf(" %255[^\n]s", kembali);
+			scanf(" %255[^\n]s", kembali);//input kembali untuk pengulangan permainan
 			
-			while (strcmp(kembali, "Tidak")){
-				if(!strcmp(kembali, "Ya")){
+			while (strcmp(kembali, "Tidak")){//output == 1 apabila tidak sama dengan "Tidak" maka untuk error handling
+				if(!strcmp(kembali, "Ya")){//pengecualian untuk Ya agar tidak terjadi looping kembali apabila input kembali == "Ya"
 					printf("Menunggu.....");
 					sleep(3);
 					break;
@@ -148,12 +151,13 @@ void dinoDuel(){
 				scanf(" %255[^\n]s", kembali);
 			}
 	}
-	while (!strcmp(kembali, "Ya"));
+	while (!strcmp(kembali, "Ya"));//Pengulangan permainan
 
-
+	
+	return 0;
 }
 
-void battleInfo (struct dino player, struct dino bot) {
+void battleInfo (struct dino player, struct dino bot) {//menampilkan info dino yang digunakan pemain dan yang digunakan lawan
 	printf("==================================================================\n");
 	printf("Berikut adalah pilihanmu:\n");
 	printf("%s\t\n", player.name);
@@ -173,13 +177,13 @@ void battleInfo (struct dino player, struct dino bot) {
 	printf("==================================================================\n");
 }
 
-void check(int player, int bot, struct dino *player1, struct dino *bot1){
+void check(int player, int bot, struct dino *player1, struct dino *bot1){//fungsi untuk mengecek siapa yang memenangkan permainan dan komputasi damage
 	float playerChance = player1->critChance * 10;
 	int playerDamage = player1->att + player1->critDamage;
 	float botChance = bot1->critChance * 10;
 	int botDamage = bot1->att + bot1->critDamage;
 	
-	if(player == bot){
+	if(player == bot){//apabila pilihan player dan bot sama
 		if (player == 1){
 			printf("\nPlayer dan bot sama-sama memilih Gunting\nLoading...");
 			sleep(2);
@@ -197,8 +201,8 @@ void check(int player, int bot, struct dino *player1, struct dino *bot1){
 		}
 	}
 
-	else if (player == 1){
-		if(bot == 2){
+	else if (player == 1){//apabila player memilih gunting
+		if(bot == 2){//bot pilih kertas
 			printf("==================================================================\n");
 			printf("Kamu: Gunting\nLawan: Kertas\n");
 			
@@ -207,19 +211,19 @@ void check(int player, int bot, struct dino *player1, struct dino *bot1){
 			sleep(2);
 			system("cls");
 			
-			if(playerChance > random(1, 10)){
+			if(playerChance > random(1, 10)){//aktualisasi dari kemungkinan critical hit
 				bot1->hp = (bot1->hp + bot1->def) - playerDamage;
 				printf("==================================================================\n");
 				printf("Penyerangan berhasil.. CRITICAL HIT!\nDamage sebesar %d telah terakumulasi\n", playerDamage - bot1->def);
 			}
 			
-			else {
+			else {//aktualisasi damage tanpa critical
 				bot1->hp = (bot1->hp + bot1->def) - player1->att;
 				printf("==================================================================\n");
 				printf("Penyerangan berhasil..\nDamage sebesar %d telah terakumulasi\n", player1->att - bot1->def);				
 			}
 		}
-		else {
+		else {//bot pilih batu
 			printf("==================================================================\n");
 			printf("Kamu: Gunting\nLawan: Batu\n");
 			
@@ -242,8 +246,8 @@ void check(int player, int bot, struct dino *player1, struct dino *bot1){
 		}
 	}
 	
-	else if (player == 2){
-		if(bot == 3){
+	else if (player == 2){//player memilih Kertas
+		if(bot == 3){//bot memilih batu
 			printf("==================================================================\n");
 			printf("Kamu: Kertas\nLawan: Batu\n");
 			
@@ -265,7 +269,7 @@ void check(int player, int bot, struct dino *player1, struct dino *bot1){
 			}
 			
 		}
-		else {
+		else {//bot memilih gunting
 			printf("==================================================================\n");
 			printf("Kamu: Kertas\nLawan: Gunting\n");
 			
@@ -288,8 +292,8 @@ void check(int player, int bot, struct dino *player1, struct dino *bot1){
 		}
 	}
 	
-	else if (player == 3){
-		if(bot == 1){
+	else if (player == 3){//player memilih batu
+		if(bot == 1){//bot memilih gunting
 			printf("==================================================================\n");
 			printf("Kamu: Batu\nLawan: Gunting\n");
 			
@@ -311,7 +315,7 @@ void check(int player, int bot, struct dino *player1, struct dino *bot1){
 			}
 		}
 		
-		else {
+		else {//bot memilih kertas
 			printf("==================================================================\n");
 			printf("Kamu: Batu\nLawan: Kertas\n");
 			
@@ -334,7 +338,7 @@ void check(int player, int bot, struct dino *player1, struct dino *bot1){
 		}
 	}
 	
-	else {
+	else {//error handling untuk input angka suit
 		printf("==================================================================\n");
 		printf("INPUT SALAH!! UBAHLAH MENJADI ANGKA 1 - 3\n");
 		printf("==================================================================\n");
