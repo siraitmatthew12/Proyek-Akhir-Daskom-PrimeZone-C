@@ -19,7 +19,7 @@ int main(){
 	  printf("\n");
 	
 	do{
-    	printf("Menu 	:\n");
+    	printf("Menu 	:\n\n");
     	printf("\t 1. Main Games	\n");
     	printf("\t 2. Petunjuk Penggunaan Program 	\n");
     	printf("\t 3. Pengisian Saldo\n");
