@@ -152,9 +152,6 @@ void dinoDuel(){
 			}
 	}
 	while (!strcmp(kembali, "Ya"));//Pengulangan permainan
-
-	
-	return 0;
 }
 
 void battleInfo (struct dino player, struct dino bot) {//menampilkan info dino yang digunakan pemain dan yang digunakan lawan
